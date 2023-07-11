@@ -4,18 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { LoginComponent } from './login.component';
+import { userReducer } from './state/user.reducer';
+import { StoreModule } from '@ngrx/store';
 
-const userRoutes: Routes = [
-  { path: 'login', component: LoginComponent }
-];
+const userRoutes: Routes = [{ path: 'login', component: LoginComponent }];
 
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild(userRoutes)
+    RouterModule.forChild(userRoutes),
+    StoreModule.forFeature('user', userReducer),
   ],
-  declarations: [
-    LoginComponent
-  ]
+  declarations: [LoginComponent],
 })
-export class UserModule { }
+export class UserModule {}
